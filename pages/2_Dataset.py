@@ -1,5 +1,13 @@
 import streamlit as st
 import pandas as pd
+from pathlib import Path
+import sys
+
+ROOT_DIR = Path(__file__).resolve().parents[1]
+if str(ROOT_DIR) not in sys.path:
+    sys.path.insert(0, str(ROOT_DIR))
+
+DATA_PATH = ROOT_DIR / "dataset" / "upwork_reviews.csv"
 
 st.set_page_config(
     page_title="Dataset",
@@ -48,7 +56,7 @@ st.markdown(
 
 @st.cache_data
 def load_data():
-    return pd.read_csv("dataset/upwork_reviews.csv")
+    return pd.read_csv(DATA_PATH)
 
 df = load_data()
 

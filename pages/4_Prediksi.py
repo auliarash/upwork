@@ -1,8 +1,16 @@
 import streamlit as st
 import joblib
 import pandas as pd
+from pathlib import Path
+import sys
+
+ROOT_DIR = Path(__file__).resolve().parents[1]
+if str(ROOT_DIR) not in sys.path:
+    sys.path.insert(0, str(ROOT_DIR))
 
 from utils.preprocessing import preprocess_text
+
+MODEL_DIR = ROOT_DIR / "model"
 
 # ===========================
 # Konfigurasi
@@ -60,8 +68,8 @@ st.write(
 
 @st.cache_resource
 def load_model():
-    model = joblib.load("model/naive_bayes_model.pkl")
-    tfidf = joblib.load("model/tfidf_vectorizer.pkl")
+    model = joblib.load(MODEL_DIR / "naive_bayes_model.pkl")
+    tfidf = joblib.load(MODEL_DIR / "tfidf_vectorizer.pkl")
     return model, tfidf
 
 model, tfidf = load_model()
