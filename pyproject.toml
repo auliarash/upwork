@@ -6,6 +6,16 @@ readme = "README.md"
 requires-python = ">=3.14"
 dependencies = [
     "streamlit>=1.60.0",
+    "pandas",
+    "numpy",
+    "scikit-learn",
+    "matplotlib",
+    "plotly",
+    "joblib",
+    "wordcloud",
+    "nltk",
+    "Sastrawi",
+    "langdetect",
 ]
 
 [tool.uv]
